@@ -1,10 +1,5 @@
 let data = [], labels = []
-let database;
 let totalCores;
-
-function preload(){
-    database = firebase.database()    
-}
 
 function setup(){
     totalCores = coresList.length
@@ -17,13 +12,13 @@ function setup(){
             ])
             labels.push(coresList.indexOf(row.label))
         });
-        something(data, labels)    
+        network(data, labels)    
     })
 }
 
-function something(data, labels){    
-    const xs = tf.tensor2d(data)
+function network(data, labels){    
     const labelsTensor = tf.tensor1d(labels, 'int32')
+    const xs = tf.tensor2d(data)    
     const ys = tf.oneHot(labelsTensor, totalCores)
     labelsTensor.dispose()
 
@@ -54,7 +49,7 @@ function something(data, labels){
     async function train(){
         for(let i = 0; i < 10; i++){
             const response = await model.fit(xs, ys, {
-                epochs: 1000
+                epochs: 100
             })
             console.log(`Err rate: ${response.history.loss[0]}`)
         }
@@ -62,22 +57,12 @@ function something(data, labels){
 
     train().then(() => {
         console.log('training complete!')
-        const test = tf.tensor2d([
+        const teste = tf.tensor2d([
             [0.854902 , 0.6705883, 0.7372549],
             [0.1019608, 0.8470588, 0.6078432],
             [0.0941176, 0.1098039, 0.2078431]
         ])
-        model.predict(test).print()
+        model.predict(teste).print()
+        teste.dispose()
     })
-}
-
-function getFromFirebase(){
-    return database
-    .ref("/colors/")
-    .once("value")
-    .then(snapshot => Object.values(snapshot.val()));
-}
-
-function draw(){
-
 }
