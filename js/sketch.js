@@ -1,15 +1,16 @@
 let r, g, b;
 let buttons = [];
-let database;
      
 function setup(){
-    createCanvas(100, 100)
+    createCanvas(400, 400)
     changeColor()
     
+    // Cria botões para cada classificação de cor
     coresList.forEach(cor => {
         buttons.push(createButton(cor))
     })
 
+    // Adiciona evento de enviar dados no botão
     buttons.forEach(button => {
         button.mousePressed(sendToFirebase)
     })    
@@ -19,8 +20,6 @@ function setup(){
 
     let exportButton = createButton('Exportar JSON')
     exportButton.mousePressed(exportToJsonFile)
-
-    database = firebase.database()   
 }
 
 function changeColor(){
@@ -31,14 +30,14 @@ function changeColor(){
 }
 
 function sendToFirebase(){ 
-    let colorDataSet = database.ref('colors')
+    let firebaseColors = database.ref('colors')
     let data = {
         'r': r,
         'g': g,
         'b': b,
         'label': this.html()
     }
-    colorDataSet.push(data, error => {
+    firebaseColors.push(data, error => {
         if(error)
             console.log(`Oops, something went wrong - ${error}`)
         else 
@@ -47,19 +46,8 @@ function sendToFirebase(){
     changeColor()
 }
 
-function getFromFirebase(){
-    return database
-    .ref("/colors/")
-    .once("value")
-    .then(snapshot => Object.values(snapshot.val()));
-}
-
 function exportToJsonFile(){
     getFromFirebase().then(cores => {
         saveJSON(cores, 'CoresDataset.json')
     })
-}
-
-function draw(){
-
 }
