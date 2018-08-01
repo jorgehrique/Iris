@@ -1,15 +1,13 @@
 let data = [], labels = []
-let database
-
-const cores = 
-    ['vermelho', 'verde', 'azul', 'preto', 'amarelo',
-     'rosa', 'cinza', 'marom', 'laranja'];
+let database;
+let totalCores;
 
 function preload(){
     database = firebase.database()    
 }
 
 function setup(){
+    totalCores = coresList.length
     getFromFirebase().then(results => {
         results.forEach(row => {
             data.push([
@@ -17,8 +15,7 @@ function setup(){
                 row.g / 255,
                 row.b / 255
             ])
-            labels.push(cores.indexOf(row.label))
-            //console.log(typeof(cores.indexOf(row.label))) number
+            labels.push(coresList.indexOf(row.label))
         });
         something(data, labels)    
     })
@@ -27,7 +24,7 @@ function setup(){
 function something(data, labels){    
     const xs = tf.tensor2d(data)
     const labelsTensor = tf.tensor1d(labels, 'int32')
-    const ys = tf.oneHot(labelsTensor, 9)
+    const ys = tf.oneHot(labelsTensor, totalCores)
     labelsTensor.dispose()
 
     xs.print()
@@ -42,7 +39,7 @@ function something(data, labels){
     })
 
     const outputLayer = tf.layers.dense({
-        units: 9,
+        units: totalCores,
         activation: 'softmax'
     })
 

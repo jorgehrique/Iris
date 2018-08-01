@@ -1,21 +1,12 @@
 let r, g, b;
-
+let buttons = [];
 let database;
-
-const cores = 
-    ['vermelho', 'verde', 'azul', 'preto', 'amarelo',
-     'rosa', 'cinza', 'marom', 'laranja'];
      
 function setup(){
     createCanvas(100, 100)
-    r = floor(random(256))
-    g = floor(random(256))
-    b = floor(random(256))
-    background(r, g, b)
+    changeColor()
     
-    let buttons = []
-    
-    cores.forEach(cor => {
+    coresList.forEach(cor => {
         buttons.push(createButton(cor))
     })
 
