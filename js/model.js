@@ -51,7 +51,8 @@ function network(data, labels){
             const response = await model.fit(xs, ys, {
                 epochs: 100
             })
-            console.log(`Err rate: ${response.history.loss[0]}`)
+            const lastEpochIndex = response.history.loss.length - 1
+            console.log(`Err rate: ${response.history.loss[lastEpochIndex]}`)
         }
     }
 
