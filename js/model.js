@@ -47,10 +47,11 @@ function network(data, labels){
     })
 
     async function train(){
-        for(let i = 0; i < 10; i++){
+        for(let i = 0; i < 1; i++){
             const response = await model.fit(xs, ys, {
-                epochs: 100
+                epochs: 1000
             })
+            console.log(response.history)
             const lastEpochIndex = response.history.loss.length - 1
             console.log(`Err rate: ${response.history.loss[lastEpochIndex]}`)
         }
