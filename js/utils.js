@@ -1,6 +1,6 @@
 const coresList = 
     ['vermelho', 'verde', 'azul', 'preto', 'amarelo',
-     'rosa', 'cinza', 'marom', 'laranja'];
+     'rosa', 'cinza', 'marrom', 'laranja', 'roxo'];
 
 const config = {
     apiKey: "AIzaSyDT6CXv3LzTzgFh6RMJLCdFuF_RSQ7mXI4",

@@ -2,12 +2,12 @@ let r, g, b;
 let buttons = [];
      
 function setup(){
-    createCanvas(400, 400)
+    createCanvas(700, 200).parent('#root')
     changeColor()
     
     // Cria botões para cada classificação de cor
     coresList.forEach(cor => {
-        buttons.push(createButton(cor))
+        buttons.push(createButton(cor).parent('#root').class(`btn btn-outline-secondary cores ${cor}`))
     })
 
     // Adiciona evento de enviar dados no botão
@@ -16,9 +16,15 @@ function setup(){
     })    
 
     let mudarCorButton = createButton('Mudar Cor')
+    .parent('#opcoes')
+    .class('btn btn-outline-secondary')
+
     mudarCorButton.mousePressed(changeColor)
 
     let exportButton = createButton('Exportar JSON')
+    .parent('#opcoes')
+    .class('btn btn-outline-secondary')
+
     exportButton.mousePressed(exportToJsonFile)
 }
 
