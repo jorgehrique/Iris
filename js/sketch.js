@@ -2,6 +2,11 @@ let r, g, b;
 let buttons = [];
      
 function setup(){
+    // bloqueio em dispositivos moveis
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        window.location.href='aviso.html'
+    }
+
     createCanvas(700, 200).parent('#root')
     changeColor()
     
