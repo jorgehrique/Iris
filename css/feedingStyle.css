@@ -19,13 +19,10 @@
 }
 
 .vermelho { border-color: red; }
-.vermelho:hover { border-color: red; background-color: red; }
 
 .verde { border-color: green; }
-.verde:hover { border-color: green; background-color: green; }
 
 .azul { border-color: blue; }
-.azul:hover { border-color: blue; background-color: blue; }
 
 .preto { border-color: black; }
 .preto:hover { border-color: black; background-color: black; }
