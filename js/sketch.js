@@ -7,7 +7,7 @@ function setup(){
     
     // Cria botões para cada classificação de cor
     coresList.forEach(cor => {
-        buttons.push(createButton(cor).parent('#root').class(`btn btn-outline-secondary cores ${cor}`))
+        buttons.push(createButton(cor).parent('#root').class(`btn cores ${cor}`))
     })
 
     // Adiciona evento de enviar dados no botão
