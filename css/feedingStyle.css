@@ -16,6 +16,7 @@
 .cores {
     width: 140px;    
     margin-top: 1px;
+    background-color: antiquewhite
 }
 
 .vermelho { border-color: red; }
@@ -25,7 +26,6 @@
 .azul { border-color: blue; }
 
 .preto { border-color: black; }
-.preto:hover { border-color: black; background-color: black; }
 
 .amarelo {border-color: yellow; }
 .amarelo:hover { border-color: yellow; background-color: yellow; }
@@ -44,4 +44,3 @@
 
 .roxo { border-color: purple; }
 .roxo:hover { border-color: purple; background-color: purple; }
-

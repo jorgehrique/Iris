@@ -17,13 +17,13 @@ function setup(){
 
     let mudarCorButton = createButton('Mudar Cor')
     .parent('#opcoes')
-    .class('btn btn-outline-secondary')
+    .class('btn')
 
     mudarCorButton.mousePressed(changeColor)
 
-    let exportButton = createButton('Exportar JSON')
+    let exportButton = createButton('Exportar Dataset')
     .parent('#opcoes')
-    .class('btn btn-outline-secondary')
+    .class('btn')
 
     exportButton.mousePressed(exportToJsonFile)
 }
