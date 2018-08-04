@@ -7,7 +7,7 @@ function setup(){
     
     // Cria botões para cada classificação de cor
     coresList.forEach(cor => {
-        buttons.push(createButton(cor).parent('#root').class(`btn cores ${cor}`))
+        buttons.push(createButton(cor).parent('#root').class(`botao cores ${cor}`))
     })
 
     // Adiciona evento de enviar dados no botão
@@ -17,13 +17,13 @@ function setup(){
 
     let mudarCorButton = createButton('Mudar Cor')
     .parent('#opcoes')
-    .class('btn')
+    .class('botao')
 
     mudarCorButton.mousePressed(changeColor)
 
     let exportButton = createButton('Exportar Dataset')
     .parent('#opcoes')
-    .class('btn')
+    .class('botao')
 
     exportButton.mousePressed(exportToJsonFile)
 }
